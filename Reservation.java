@@ -64,6 +64,16 @@ public class Reservation {
     public double getPaiement() {
         return paiement;
     }
+
+    public ArrayList<Passager> getListepassager() {
+        return listepassager;
+    }
+
+    public ArrayList<Vol> getListevol() {
+        return listevol;
+    }
+    
+    
     
     // SET
     public void setNumReservation(int numReservation) {
@@ -88,6 +98,14 @@ public class Reservation {
 
     public void setPaiement(double paiement) {
         this.paiement = paiement;
+    }
+
+    public void setListepassager(ArrayList<Passager> listepassager) {
+        this.listepassager = listepassager;
+    }
+
+    public void setListevol(ArrayList<Vol> listevol) {
+        this.listevol = listevol;
     }
     
 }

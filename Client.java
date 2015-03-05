@@ -40,6 +40,10 @@ public class Client extends Personne{
     public String getMotdepasse() {
         return motdepasse;
     }
+
+    public ArrayList<Reservation> getListereservation() {
+        return listereservation;
+    }
     
     // SET
     public void setNumClient(String numClient) {
@@ -52,6 +56,10 @@ public class Client extends Personne{
     
     public void setMotdepasse(String motdepasse) {
         this.motdepasse = motdepasse;
+    }
+
+    public void setListereservation(ArrayList<Reservation> listereservation) {
+        this.listereservation = listereservation;
     }
     
     

@@ -23,9 +23,12 @@ public class Vol {
     private int quantiteClasse1;
     private double prixClasse2;
     private int quantiteClasse2;
+    private Aeroport aeroportOrigine;
+    private Aeroport aeroportDestination;
+
     
     // Constructeur
-    public Vol(String noVol, Date dd, Time hd, Date da, Time ha, double pc1, int qc1, double pc2, int qc2){
+    public Vol(String noVol, Date dd, Time hd, Date da, Time ha, double pc1, int qc1, double pc2, int qc2, Aeroport ao, Aeroport ad){
         numeroVol = noVol;
         dateDepart = dd;
         heureDepart = hd;
@@ -35,6 +38,8 @@ public class Vol {
         quantiteClasse1 = qc1;
         prixClasse2 = pc2;
         quantiteClasse2 = qc2;
+        aeroportOrigine = ao;
+        aeroportDestination = ad;
     }
     
     //GET
@@ -73,6 +78,14 @@ public class Vol {
     public int getQuantiteClasse2() {
         return quantiteClasse2;
     }
+
+    public Aeroport getAeroportOrigine() {
+        return aeroportOrigine;
+    }
+
+    public Aeroport getAeroportDestination() {
+        return aeroportDestination;
+    }
     
     // SET
 
@@ -96,20 +109,28 @@ public class Vol {
         this.heureArrivee = heureArrivee;
     }
 
-    public void setPrixClasse1(double prixClasse1) {
+    /*public void setPrixClasse1(double prixClasse1) {
         this.prixClasse1 = prixClasse1;
-    }
+    }*/
 
     public void setQuantiteClasse1(int quantiteClasse1) {
         this.quantiteClasse1 = quantiteClasse1;
     }
 
-    public void setPrixClasse2(double prixClasse2) {
+    /*public void setPrixClasse2(double prixClasse2) {
         this.prixClasse2 = prixClasse2;
-    }
+    }*/
 
     public void setQuantiteClasse2(int quantiteClasse2) {
         this.quantiteClasse2 = quantiteClasse2;
+    }
+
+    public void setAeroportOrigine(Aeroport aeroportOrigine) {
+        this.aeroportOrigine = aeroportOrigine;
+    }
+
+    public void setAeroportDestination(Aeroport aeroportDestination) {
+        this.aeroportDestination = aeroportDestination;
     }
     
     
