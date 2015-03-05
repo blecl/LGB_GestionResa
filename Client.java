@@ -5,6 +5,8 @@
  */
 package gestionreservation;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author gwen0309
@@ -15,6 +17,7 @@ public class Client extends Personne{
     private String numClient;
     private String login;
     private String motdepasse;
+    private ArrayList<Reservation> listereservation;
     
     // Constructeur
     public Client(String nomPers, String prenomPers, String addr, String tel, String noClient, String log, String mdp) {
@@ -22,6 +25,7 @@ public class Client extends Personne{
         numClient = noClient;
         login = log;
         motdepasse = mdp;
+        listereservation = new ArrayList();
     }
     
     //GET
