@@ -101,11 +101,64 @@ public class GestionVol {
                 heurea = Clavier.lireString();  
                 harrivee = df.parse(heurea); // Transformation de la string heured en date harrivee selon le format
                 i = 1;
+                
             } catch(ParseException e){
                 System.out.println("L'heure n'est pas au bon format ! Recommencez!");
                 i=0;
             }                        
         }while(i==0);
+        
+        /*Test sur la date et l'heure d'arrivée*/
+        int j = 0;
+        while (j == 0 || i==0){
+            if (ddepart.compareTo(darrivee ) > 0) {   // traitement du cas ddepart > darrivee  // alert : erreur darrivee < ddepart resaisir la date arriver
+                System.out.println("Erreur ! Votre date d'arrivée est antérieur à la date de départ");
+                System.out.println("Saisir la date d'arrivee");
+                joura = Clavier.lireInt();
+                System.out.println("Saisir le mois");
+                moisa = Clavier.lireInt();
+                System.out.println("Saisir l'année");
+                anneea = Clavier.lireInt();
+                darrivee = new Date(anneea-1900,moisa-1,joura);
+                j=0;
+           
+            }else if (ddepart.compareTo(darrivee ) == 0) { // Cas hdépart = harrivee // Resaisir l'heure arrivee
+                if (hdepart.compareTo(harrivee) > 0){ // cas harriver antérieur a hdepart --> resaisir heure et re-test
+                    System.out.println("Erreur de saisie dans l'heure d'arrivée.");
+                    System.out.println("Heure arrivée est antérieur à l'heure départ");
+                    try{ // do while en  test try catch pour l'interface grpahique
+                        System.out.println("Saisir l'heure d'arrivee au format hh:mm am ou pm");
+                        heurea = Clavier.lireString();  
+                        harrivee = df.parse(heurea); // Transformation de la string heured en date harrivee selon le format
+                        i = 0;
+                    } catch(ParseException e){
+                        System.out.println("L'heure n'est pas au bon format ! Recommencez!");
+                        i=0;
+                    }       
+                    j=0;
+                }else if(hdepart.compareTo(harrivee) == 0){ // cas de l'heure départ et heure arrivéé identique
+                    System.out.println("Erreur de saisie dans l'heure d'arrivée.");
+                    System.out.println("Heure arrivée est égale à l'heure départ");
+                    try{ // do while en  test try catch pour l'interface grpahique
+                        System.out.println("Saisir l'heure d'arrivee au format hh:mm am ou pm");
+                        heurea = Clavier.lireString();  
+                        harrivee = df.parse(heurea); // Transformation de la string heured en date harrivee selon le format
+                        i = 0;
+                    } catch(ParseException e){
+                        System.out.println("L'heure n'est pas au bon format ! Recommencez!");
+                        i=0;
+                    }       
+                    j=0;
+                }else{ // cas harrivée OK
+                    System.out.println("Harrivee OK!");
+                    i=1;
+                    j=1;
+                }
+            }else{
+                System.out.println("Date et heure arrivée OK !");
+                j = 1;
+            }    
+        }
         // Interface graphique 
         /* 
         System.out.println("Saisir l'heure d'arrivee"); interface graphique
@@ -195,22 +248,59 @@ public class GestionVol {
         }
         return a;
     }
+    public void afficherVols(){
+        int i;
+        
+        if(!listevol.isEmpty()){
+            for(i=0; i<listevol.size(); i++){
+                System.out.println("-------");
+                System.out.println(listevol.get(i).getNumeroVol());
+                System.out.println(listevol.get(i).getAeroportOrigine().getNomAeroport());
+                System.out.println(listevol.get(i).getAeroportDestination().getNomAeroport());
+                System.out.println(listevol.get(i).getDateDepart());
+                System.out.println(listevol.get(i).getHeureDepart());
+                System.out.println(listevol.get(i).getDateArrivee());
+                System.out.println(listevol.get(i).getHeureArrivee());
+            }
+        }
+    }
+    
+    public void listerAeroports(){
+        int i;
+        
+        if(!listeaeroport.isEmpty()){
+            for(i=0; i<listeaeroport.size(); i++){
+                System.out.println("-------");
+                System.out.println(listeaeroport.get(i).getNumeroAeroport());
+                System.out.println(listeaeroport.get(i).getNomAeroport());
+                System.out.println(listeaeroport.get(i).getAdresse());
+                System.out.println(listeaeroport.get(i).getTelephone());
+                
+            }
+        }
+    }
     
     public void menu(){
         int i; // pour recupérer le numéro du menu
         System.out.println("Que voulez-vous faire?");
         System.out.println("1 Saisir un vol");
         System.out.println("2 Saisir un aeroport");
+        System.out.println("3 Afficher les vols");
+        System.out.println("4 Afficher les aeroports");
 
         i = Clavier.lireInt();
         
         switch (i){
             case 1 : saisirVol();
-                     menu();
+                    menu();
                 break;
             case 2 : saisirAeroport();
-                     menu();
+                    menu();
                 break;
+            case 3 : afficherVols();
+                    menu();
+            case 4 : listerAeroports();
+                    menu();
             default: System.out.println("Fin de l'éxécution");
         }
     }
