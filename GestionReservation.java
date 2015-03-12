@@ -17,7 +17,7 @@ public class GestionReservation {
     
 //-------------- Attributs -------------------
     private ArrayList<Reservation> tabResa; 
-    
+    private ArrayList<Vol> tabVol; 
     
     public GestionReservation()
     {
@@ -26,19 +26,76 @@ public class GestionReservation {
     
     public void AjouterReservation()
     {
+        Vol v; 
         Reservation r; 
-        String c; 
+        String c, num_v; 
         Date date_resa; 
-        int nbPlace; 
-        double a, p; 
+        int nb, a, j, m; 
+        double ac, p; 
         
+        System.out.println("Saisir date de réservation: ");
+        System.out.println("Saisir l'année: ");
+        a = Clavier.lireInt();
+        System.out.println("Saisir le mois: ");
+        m = Clavier.lireInt();
+        System.out.println("Saisir le jour: ");
+        j = Clavier.lireInt(); 
+        date_resa = new Date(a-1900,m-1,j);
+        
+        System.out.println("Saisir une classe (économique, affaire ou première): ");
+        c = Clavier.lireString(); 
+        System.out.println("Saisir le nombre de passager: ");
+        nb = Clavier.lireInt(); 
+        System.out.println("Saisir l'acccompte versé: ");
+        ac = Clavier.lireDouble(); 
+        System.out.println("Saisir le paiement (insérer 0): ");
+        p = Clavier.lireDouble(); 
+       
+        System.out.println("Saisir un numéro de vol: ");
+        num_v = Clavier.lireString();
+        v= rechercherVol(num_v); 
+        
+        r = new Reservation(date_resa, c, nb, p, p, v); 
+        tabResa.add(r); 
         
     }
     
     
+    public Vol rechercherVol(String num_v)
+    {
+        Vol v, trouve = null; 
+        int i=0; 
+
+        if(!tabVol.isEmpty())
+        {
+            while(i<tabVol.size()&& trouve==null)
+            {
+                v = tabVol.get(i); 
+                
+                if(v.getNumeroVol().equalsIgnoreCase(num_v))
+                {
+                    trouve = v; 
+                }
+                i++;
+            } 
+        }
+         return trouve;
+    }
     
-    
-    
+    /*public void listerVol()
+    {
+        Vol v;   
+        v = rechercherVol(String num_v);
+        
+        if(v!=null)
+        {
+            System.out.println("Numéro de vol: "+v.getNumeroVol());
+            System.out.println("Date de départ: "+v.getDateDepart());
+            System.out.println("Heure départ: "+v.getHeureDepart());
+            System.out.println("Date arrivé: "+v.getDateArrivee());
+            System.out.println("Heure arrivé: "+v.getHeureArrivee());   
+        }
+    }*/
     
     public void menu()
     {
@@ -68,3 +125,5 @@ public class GestionReservation {
     }
     
 }
+
+

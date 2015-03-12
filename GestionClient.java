@@ -13,14 +13,24 @@ import java.util.ArrayList;
  */
 public class GestionClient {
 
-    //-------- Attibuts -------------- 
+    //--------------//
+    //   Attributs  //
+    //--------------//    
     private ArrayList<Client> tabClient; 
+    
+    //--------------//
+    // Constructeur //
+    //--------------//
     
     public GestionClient ()
     {
   
         tabClient = new ArrayList(); 
     }
+    
+    //--------------//
+    //   Methodes   //
+    //--------------//
     
     public void AjouterClient()
     {

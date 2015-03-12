@@ -20,22 +20,22 @@ public class Reservation {
     private int nombrePlace;
     private double acompte;
     private double paiement; // montant restant a payer
-    private ArrayList<Passager> listepassager;
+    //private ArrayList<Passager> listepassager;
     private ArrayList<Vol> listevol;
     private static int nb; 
 
     
     // Constructeur
-    public Reservation (Date dresa, String c, int nbPlace, double a, double p, Passager pass, Vol v) {
+    public Reservation (Date dresa, String c, int nbPlace, double a, double p, Vol v) {
         dateReservation = dresa;
         classe = c;
         nombrePlace = nbPlace;
         acompte = a;
         paiement = p;
-        listepassager = new ArrayList(); // iniialisation du tableau
-        listepassager.add(pass); // ajouter passager au tableau pour cardinalité 1 *
+        //listepassager = new ArrayList(); // iniialisation du tableau
+       // listepassager.add(pass); // ajouter passager au tableau pour cardinalité 1 *
         listevol = new ArrayList(); // iniialisation du tableau
-        listevol.add(v);
+        //listevol.add(v);
         nb ++; 
         numReservation = nb; 
 
@@ -67,9 +67,9 @@ public class Reservation {
         return paiement;
     }
 
-    public ArrayList<Passager> getListepassager() {
+    /*public ArrayList<Passager> getListepassager() {
         return listepassager;
-    }
+    }*/
 
     public ArrayList<Vol> getListevol() {
         return listevol;
@@ -102,9 +102,9 @@ public class Reservation {
         this.paiement = paiement;
     }
 
-    public void setListepassager(ArrayList<Passager> listepassager) {
+    /*public void setListepassager(ArrayList<Passager> listepassager) {
         this.listepassager = listepassager;
-    }
+    }*/
 
     public void setListevol(ArrayList<Vol> listevol) {
         this.listevol = listevol;
