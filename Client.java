@@ -14,22 +14,25 @@ import java.util.ArrayList;
 public class Client extends Personne{
 
     // Attributs
-    private String numClient;
+    private int numClient;
     private String login;
     private String motdepasse;
     private ArrayList<Reservation> listereservation;
+    private static int nb; 
     
     // Constructeur
-    public Client(String nomPers, String prenomPers, String addr, String tel, String noClient, String log, String mdp) {
+    public Client(String nomPers, String prenomPers, String addr, String tel, String log, String mdp) {
         super(nomPers, prenomPers, addr, tel);
-        numClient = noClient;
+      
         login = log;
         motdepasse = mdp;
         listereservation = new ArrayList();
+        nb ++; 
+        numClient = nb; 
     }
     
     //GET
-    public String getNumClient() {
+    public int getNumClient() {
         return numClient;
     }
 
@@ -46,7 +49,7 @@ public class Client extends Personne{
     }
     
     // SET
-    public void setNumClient(String numClient) {
+    public void setNumClient(int numClient) {
         this.numClient = numClient;
     }
     

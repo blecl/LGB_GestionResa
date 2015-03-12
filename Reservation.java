@@ -22,11 +22,11 @@ public class Reservation {
     private double paiement; // montant restant a payer
     private ArrayList<Passager> listepassager;
     private ArrayList<Vol> listevol;
+    private static int nb; 
 
     
     // Constructeur
-    public Reservation (int noResa, Date dresa, String c, int nbPlace, double a, double p, Passager pass, Vol v) {
-        numReservation = noResa;
+    public Reservation (Date dresa, String c, int nbPlace, double a, double p, Passager pass, Vol v) {
         dateReservation = dresa;
         classe = c;
         nombrePlace = nbPlace;
@@ -36,6 +36,8 @@ public class Reservation {
         listepassager.add(pass); // ajouter passager au tableau pour cardinalité 1 *
         listevol = new ArrayList(); // iniialisation du tableau
         listevol.add(v);
+        nb ++; 
+        numReservation = nb; 
 
     }
     
