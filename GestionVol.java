@@ -16,7 +16,7 @@ import java.util.Date;
  *
  * @author gwen0309
  */
-public class GestionVol {
+public class GestionVol { 
     public static void main(String[] args) {
         GestionVol gv;
         gv = new GestionVol();
