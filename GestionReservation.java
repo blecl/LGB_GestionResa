@@ -82,20 +82,107 @@ public class GestionReservation {
          return trouve;
     }
     
-    /*public void listerVol()
+    public void supprimerReservation()
     {
-        Vol v;   
-        v = rechercherVol(String num_v);
+        Reservation resa; 
         
-        if(v!=null)
+        System.out.println("Rechercher la réservation à supprimer: ");
+        resa = rechercherReservation(); 
+        if (resa!=null) // && si il y a une contrainte 
         {
-            System.out.println("Numéro de vol: "+v.getNumeroVol());
-            System.out.println("Date de départ: "+v.getDateDepart());
-            System.out.println("Heure départ: "+v.getHeureDepart());
-            System.out.println("Date arrivé: "+v.getDateArrivee());
-            System.out.println("Heure arrivé: "+v.getHeureArrivee());   
+          tabResa.remove(resa); 
         }
-    }*/
+        
+    }
+    
+    public Reservation rechercherReservation()
+    {
+        Reservation resa, trouve = null; 
+        int i=0; 
+        int num_r; 
+
+        System.out.println("Entrer le numéro de la reservation à rechercher: ");
+        num_r = Clavier.lireInt(); 
+        
+        if(!tabResa.isEmpty())
+        {
+            while(i<tabResa.size()&& trouve==null)
+            {
+                resa = tabResa.get(i); 
+                
+                if(resa.getNumReservation() ==  num_r)
+                {
+                    trouve = resa; 
+                }
+                i++;
+            } 
+        }
+         return trouve;
+    }
+    
+   
+    public void modifierReservation()
+    {
+        Reservation resa;
+        Vol v; 
+        int r, num_p; 
+        String choix, choix2,choix3; 
+        
+        resa = rechercherReservation();
+        if (resa==null)
+        {
+            System.out.println("Réservation innexistante");
+        }
+        else 
+        {
+            System.out.println("Voulez-vous modifier le nombre de place ? (y/n)");
+            choix = Clavier.lireString(); 
+            if (choix=="y")
+            {
+                System.out.println("Entrez le nombre de place: ");
+                num_p = Clavier.lireInt(); 
+                resa.setNombrePlace(num_p);
+            }
+            
+            System.out.println("Voulez vous supprimer un vol ?(y/n)");
+            choix2 = Clavier.lireString(); 
+            if (choix2=="y")
+            {
+                tabVol.remove(resa);
+                System.out.println("Vol supprimer.");
+            }
+            System.out.println("Voulez vous ajouter un nouveau vol ?(y/n)");    
+            choix3 = Clavier.lireString();
+            if (choix3=="y")
+            {
+                
+               /* v = saisirVol(); 
+                resa.getListevol().add(v);*/
+            }
+        }
+    }
+        
+        public void ajoutMontant()
+        {
+            Reservation resa; 
+            double mont; 
+            
+            System.out.println("Reservation pour laquelle vous voulez ajouter un montant: ");
+            resa = rechercherReservation(); 
+            if (resa==null)
+            {
+                System.out.println("Reservation inexistante");
+            }
+            else
+            {
+                System.out.println("Saisir montant payé");
+                mont = Clavier.lireDouble(); 
+                resa.setPaiement(mont); 
+            }
+        }
+        
+    
+            
     
     public void menu()
     {
@@ -125,5 +212,3 @@ public class GestionReservation {
     }
     
 }
-
-
